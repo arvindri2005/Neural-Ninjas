@@ -11,15 +11,17 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   console.log(req.body);
+
   const userExists = await User.findOne({email});
+  console.log(userExists);
 
   if(userExists && (await userExists.matchPassword(password))){
     res.json({
-      _id:user._id,
-      name:user.name,
-      email:user.email,
-      pic:user.pic,
-      token:user.token
+      _id:userExists._id,
+      name:userExists.name,
+      email:userExists.email,
+      pic:userExists.pic,
+      token:userExists.token
     })
   }
 
