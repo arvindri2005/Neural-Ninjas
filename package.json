@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node backend/server.mjs",
+    "server": "nodemon backend/server.mjs",
     "build": "npm install"
   },
   "author": "Arvind",

@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if(userExists && (await userExists.matchPassword(password))){
     res.json({
-      _id:userExists._id,
+      _id:"",
       name:userExists.name,
       email:userExists.email,
       pic:userExists.pic,
@@ -63,8 +63,13 @@ const authUser = asyncHandler(async(req,res) => {
     })
   }
   else{
-    res.status(401);
-    throw new Error('Invalid Email or Password');
+    res.json({
+      _id:"",
+      name:user.name,
+      email:user.email,
+      pic:user.pic,
+      token:generateToken(user._id)
+    })
   }
 
 })
